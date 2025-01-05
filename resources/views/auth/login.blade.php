@@ -1,10 +1,5 @@
-@extends('layouts.clean', ['cssClass' => 'page-login'])
-
-@section('title', 'Login')
-
-
-@section('childContent')
-<main>
+<x-base-layout bodyClass="page-login" title="Login">
+  <main>
     <div class="container-small page-login">
       <div class="flex" style="gap: 5rem">
         <div class="auth-page-form">
@@ -57,4 +52,4 @@
     </div>
   </main>
   
-@endsection
+</x-base-layout>
