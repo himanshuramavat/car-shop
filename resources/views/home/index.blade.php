@@ -16,6 +16,10 @@
       <x-slot:footer>Card footer 2 qw</x-slot:title>
     </x-card>
 
+    <x-test-component class='card'>
+      Lorem Ipsiume
+    </x-test-component>
+
     <!-- Home Slider -->
     <section class="hero-slider">
         <!-- Carousel wrapper -->
