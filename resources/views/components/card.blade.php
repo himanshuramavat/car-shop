@@ -1,5 +1,9 @@
 <div class="card">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum perferendis, commodi hic labore nihil
-    itaque sapiente aliquid amet rerum recusandae adipisci deleniti saepe ipsum, harum non repellendus laudantium?
-    Harum, nulla?
+    <div class="card-header">{{ $title }}</div>
+    @if($slot->isEmpty())
+        Please provide a body for the card
+    @else
+        {{ $slot }}
+    @endif
+    <div class="card-footer">{{ $footer }}</div>
 </div>

@@ -74,9 +74,16 @@
     <!--/ Home Slider -->
 
     <main>
-      <x-card />
-      <x-admin.card />
-      <x-button />
+      <x-card>
+        <x-slot name="title">Card title 1</x-slot>
+        <x-slot name="footer">Card footer 1</x-slot>
+      </x-card>
+      <x-card>
+        <x-slot:title>Card title 2 wqw</x-slot>
+        Card content 2
+        <x-slot:footer>Card footer 2 qw</x-slot:title>
+      </x-card>
+
         <!-- Find a car form -->
         <section class="find-a-car">
           <div class="container">
