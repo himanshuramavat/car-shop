@@ -11,12 +11,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.index')
-            ->with('name', 'Himanshu')
-            ->with('surname', 'Ramavat!')
-            ->with('job', '<b>Software Engineer</b>')
-            ->with('contry', 'India')
-            ->with('hobbies', ['Reading', 'Writing', 'Coding']);
+        return view('home.index');
     }
 
     /**
