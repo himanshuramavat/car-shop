@@ -74,6 +74,9 @@
     <!--/ Home Slider -->
 
     <main>
+      <x-card />
+      <x-admin.card />
+      <x-button />
         <!-- Find a car form -->
         <section class="find-a-car">
           <div class="container">
@@ -989,5 +992,11 @@
         </section>
         <!--/ New Cars -->
       </main>
+
+      @section('footerLinks')
+        @parent
+        <a href="http://">Link 3</a>
+        <a href="http://">Link 4</a>
+      @endsection
 
 @endsection
