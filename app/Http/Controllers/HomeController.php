@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,6 +12,34 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // Get all cars
+        $cars = Car::get();
+        dump($cars);
+
+        // Get Published cars
+        $publishedCars = Car::where('published_at','!=', null)->get();
+        dump($publishedCars);
+
+        // Get the first published car
+        $firstPublishedCar = Car::where('published_at','!=', null)->first();
+        dump($firstPublishedCar);
+
+
+        $car = Car::find(2);
+
+        $car = Car::orderBy('published_at','desc')->get();
+        dump($car); 
+
+        $car = Car::limit(2)->get();
+        dump($car);
+
+
+        $car = Car::where('published_at','!=', null)
+            ->where('user_id', 2)
+            ->orderBy('published_at','desc')
+            ->limit(3)
+            ->get();
+        dump($car);
         return view('home.index');
     }
 
