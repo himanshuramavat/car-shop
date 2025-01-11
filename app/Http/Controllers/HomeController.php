@@ -12,35 +12,72 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $carData = [
-            'maker_id' => 1,
-            'model_id' => 1,
-            'year' => 2020,
-            'price' => 10000,
-            'vin' => '1234567890',
-            'mileage' => 10000,
-            'car_type_id' => 1,
-            'fuel_type_id' => 1,
-            'user_id' => 1,
-            'city_id' => 1,
-            'address' => '123 Main St',
-            'phone' => '123-456-7890',
-            'description' => 'This is a car',
-            'published_at' => now(),
-        ];
+        // $carData = [
+        //     'maker_id' => 1,
+        //     'model_id' => 1,
+        //     'year' => 2020,
+        //     'price' => 10000,
+        //     'vin' => '1234567890',
+        //     'mileage' => 10000,
+        //     'car_type_id' => 1,
+        //     'fuel_type_id' => 1,
+        //     'user_id' => 1,
+        //     'city_id' => 1,
+        //     'address' => '123 Main St',
+        //     'phone' => '123-456-7890',
+        //     'description' => 'This is a car',
+        //     'published_at' => now(),
+        // ];
 
-        //Approach 1
-        $car = Car::create($carData);
+        // //Approach 1
+        // $car = Car::create($carData);
 
-        //Approach 2
-        $car = new Car();
-        $car->fill($carData);
-        $car->save();
+        // //Approach 2
+        // $car = new Car();
+        // $car->fill($carData);
+        // $car->save();
 
-        //Approach 3
-        $car = new Car($carData);
-        $car->save();
+        // //Approach 3
+        // $car = new Car($carData);
+        // $car->save();
 
+
+        // $car = Car::find(1);
+        // $car->price = 20000;
+        // $car->save();
+
+        
+        
+        // $carData = [
+        //     'maker_id' => 1,
+        //     'model_id' => 1,
+        //     'year' => 2020,
+        //     'price' => 10000,
+        //     'vin' => '1234567890',
+        //     'mileage' => 10000,
+        //     'car_type_id' => 1,
+        //     'fuel_type_id' => 1,
+        //     'user_id' => 1,
+        //     'city_id' => 1,
+        //     'address' => '123 Main St',
+        //     'phone' => '123-456-7890',
+        //     'description' => 'This is a HImanshu\'s car',
+        //     'published_at' => now(),
+        // ];
+        // Car::updateOrCreate(
+        //     ['vin' => '9999', 'price' => 10000],
+        //     $carData
+        // );
+
+        
+        // Car::where('published_at', null)
+        // ->where('user_id', 1)
+        // ->update(['published_at' => now()]);
+
+
+        $car = Car::find(1);
+        $car->delete();
+        
         return view('home.index');
     }
 
