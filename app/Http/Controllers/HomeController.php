@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\FuelType;
+use App\Models\Maker;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -75,9 +77,45 @@ class HomeController extends Controller
         // ->update(['published_at' => now()]);
 
 
+        // $car = Car::find(1);
+        // $car->delete();
+
+        // Car::destroy([2,3]);
+
+        // Car::where('published_at', null)
+        // ->where('user_id', 1)
+        // ->delete();
+
+
+        // Car::truncate();
+
+        // Challenge 1: Retrive all cars records from the database where the price is greater than 20000
+
+        $car = Car::where('price', '>', 20000)->get();
+        // dd($car);
+
+
+        // Challenge 2: Fetch the maker name where maker name is "Toyota"
+
+        $maker = Maker::where('name', 'Toyota')->first();
+        // dd($maker);
+
+        // Challenge 3: Insert a new fuelType recod with the name of "Electric"
+
+        $fuelType = new FuelType();
+        // $fuelType->fill(['name' => 'Electric']);
+        // $fuelType->save();
+
+        // Challenge 4: Update the car record where the id is 1 and update the price to 30000
+
         $car = Car::find(1);
-        $car->delete();
-        
+        $car->price = 30000;
+        $car->save();
+
+
+        // Challenge 5: Delete the car record where the year is before 2015
+
+        Car::where('year', '<', 2015)->delete();
         return view('home.index');
     }
 
