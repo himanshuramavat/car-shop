@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
-use App\Models\FuelType;
 use App\Models\Maker;
+use App\Models\CarType;
+use App\Models\CarImage;
+use App\Models\FuelType;
+use App\Models\CarFeatures;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,108 +17,80 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $carData = [
-        //     'maker_id' => 1,
-        //     'model_id' => 1,
-        //     'year' => 2020,
-        //     'price' => 10000,
-        //     'vin' => '1234567890',
-        //     'mileage' => 10000,
-        //     'car_type_id' => 1,
-        //     'fuel_type_id' => 1,
-        //     'user_id' => 1,
-        //     'city_id' => 1,
-        //     'address' => '123 Main St',
-        //     'phone' => '123-456-7890',
-        //     'description' => 'This is a car',
-        //     'published_at' => now(),
-        // ];
+        // $car = Car::find(1);
 
-        // //Approach 1
-        // $car = Car::create($carData);
+        // $car->features->update(['remote_start' => 1 ]);
 
-        // //Approach 2
-        // $car = new Car();
-        // $car->fill($carData);
-        // $car->save();
+        // $car->primaryImage->delete();
 
-        // //Approach 3
-        // $car = new Car($carData);
-        // $car->save();
+        // dd($car->features,$car->primaryImage);
+
+        // $car = Car::find(2);
+
+        // $carFeatures = new CarFeatures([
+        //     'abs' => 1,
+        //     'air_conditioning' => 1,
+        //     'power_windows' => 1,
+        //     'power_door_locks' => 1,
+        //     'cruise_control' => 1,
+        //     'bluetooth_connectivity' => 1,
+        //     'remote_start' => 1,
+        //     'gps_navigation' => 1,
+        //     'heater_seats' => 1,
+        //     'climat_control' => 1,
+        //     'rear_parking_sensors' => 1,
+        //     'leather_seats' => 1,
+        // ]);
+
+        // $car->features()->save($carFeatures);
+
+        // $car = Car::find(1);
+
+        // $image = new CarImage([
+        //     'image_path' => 'path/to/image',
+        //     'position' => 1,
+        // ]);
+
+        // $car->images()->save($image);
+
+        // $car->images()->create([
+        //     'image_path' => 'path/to/image',
+        //     'position' => 3,
+        // ]);
+
+        // $car->images()->createMany([
+        //     [
+        //         'image_path' => 'path/to/image',
+        //         'position' => 4,
+        //     ],
+        //     [
+        //         'image_path' => 'path/to/image',
+        //         'position' => 6,
+        //     ],
+        // ]);
+        // $car->images()->saveMany([
+        //     new CarImage([
+        //         'image_path' => 'path/to/image',
+        //         'position' => 7,
+        //     ]),
+        //     new CarImage([
+        //         'image_path' => 'path/to/image',
+        //         'position' => 8,
+        //     ]),
+        // ]);
+        // dd($car->images);
 
 
         // $car = Car::find(1);
-        // $car->price = 20000;
-        // $car->save();
+        // dd($car->carType->name);
 
+        $carType = CarType::where('name', 'Hatchback')->first();
+
+        // $cars = Car::whereBelongsTo($carType)->get();
+        $cars = $carType->cars;
+
+        // dd($cars);
         
-        
-        // $carData = [
-        //     'maker_id' => 1,
-        //     'model_id' => 1,
-        //     'year' => 2020,
-        //     'price' => 10000,
-        //     'vin' => '1234567890',
-        //     'mileage' => 10000,
-        //     'car_type_id' => 1,
-        //     'fuel_type_id' => 1,
-        //     'user_id' => 1,
-        //     'city_id' => 1,
-        //     'address' => '123 Main St',
-        //     'phone' => '123-456-7890',
-        //     'description' => 'This is a HImanshu\'s car',
-        //     'published_at' => now(),
-        // ];
-        // Car::updateOrCreate(
-        //     ['vin' => '9999', 'price' => 10000],
-        //     $carData
-        // );
-
-        
-        // Car::where('published_at', null)
-        // ->where('user_id', 1)
-        // ->update(['published_at' => now()]);
-
-
-        // $car = Car::find(1);
-        // $car->delete();
-
-        // Car::destroy([2,3]);
-
-        // Car::where('published_at', null)
-        // ->where('user_id', 1)
-        // ->delete();
-
-
-        // Car::truncate();
-
-        // Challenge 1: Retrive all cars records from the database where the price is greater than 20000
-
-        $car = Car::where('price', '>', 20000)->get();
-        // dd($car);
-
-
-        // Challenge 2: Fetch the maker name where maker name is "Toyota"
-
-        $maker = Maker::where('name', 'Toyota')->first();
-        // dd($maker);
-
-        // Challenge 3: Insert a new fuelType recod with the name of "Electric"
-
-        $fuelType = new FuelType();
-        // $fuelType->fill(['name' => 'Electric']);
-        // $fuelType->save();
-
-        // Challenge 4: Update the car record where the id is 1 and update the price to 30000
-
-        $car = Car::find(1);
-        $car->price = 30000;
-        $car->save();
-
-
-        // Challenge 5: Delete the car record where the year is before 2015
-
-        Car::where('year', '<', 2015)->delete();
         return view('home.index');
     }
 

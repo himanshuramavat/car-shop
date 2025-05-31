@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cars_features', function (Blueprint $table) {
+        Schema::create('car_features', function (Blueprint $table) {
             $table->unsignedBigInteger('car_id')->primary();
             $table->boolean('abs')->default(0);
             $table->boolean('air_conditioning')->default(0);
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cars_features');
+        Schema::dropIfExists('car_features');
     }
 };
